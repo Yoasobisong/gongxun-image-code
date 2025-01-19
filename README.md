@@ -28,8 +28,8 @@ gongxun_demo/
 │   ├── openvino_detect.py# OpenVINO inference
 │   ├── send_web.py       # Web communication
 │   └── serial_deal.py    # Serial communication
-├── ann_pt/            # Neural network model files
-└── mat_vino/          # OpenVINO optimized models
+├── ann_pt/            # Annotation neural network model
+└── mat_pt/            # Material detection model
 ```
 
 ## Code Description

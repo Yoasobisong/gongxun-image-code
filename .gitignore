@@ -33,8 +33,10 @@ wheels/
 venv/
 ENV/
 
-# Model files
+# Model files (but allow specific models)
 *.pt
+!ann_pt/ann.pt
+!mat_pt/mat.pt
 *.pth
 *.onnx
 *.weights
