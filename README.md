@@ -6,13 +6,7 @@ This repository contains computer vision code implementations for industrial tra
 
 Below is a demo video showing material detection in action:
 
-https://user-images.githubusercontent.com/YOUR_USER_ID/gongxun-image-code/assets/runs/mat_o.mp4
-
-<div align="center">
-  <video src="runs/mat_o.mp4" width="640" height="480" controls>
-    Your browser does not support the video tag.
-  </video>
-</div>
+![Demo Video](https://github.com/Yoasobisong/gongxun-image-code/raw/main/runs/mat_o.mp4)
 
 ## Key Features
 
@@ -139,7 +133,6 @@ cd gongxun-image-code
 ```
 
 2. Install dependencies
-
 
 3. Run examples
 ```bash
