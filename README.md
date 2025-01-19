@@ -6,7 +6,7 @@ This repository contains computer vision code implementations for industrial tra
 
 Below is a demo video showing material detection in action:
 
-https://github.com/Yoasobisong/gongxun-image-code/raw/main/runs/mat_o.avi
+![Material Detection Demo](runs/mat_o.avi)
 
 ## Key Features
 
