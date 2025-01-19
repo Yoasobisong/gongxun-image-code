@@ -49,15 +49,15 @@ mat_data/
 *.png
 *.gif
 *.mp4
+!runs/mat_o.mp4
 *.avi
-!runs/mat_o.avi
 *.mov
 
 # Logs and databases
 *.log
 *.sqlite3
 runs/
-!runs/mat_o.avi
+!runs/mat_o.mp4
 
 # OS generated files
 .DS_Store
