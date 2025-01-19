@@ -1,6 +1,6 @@
 # Industrial Training Competition Computer Vision Code
 
-##2025工训赛物流搬运图像处理
+## 2025工训赛物流搬运图像处理
 
 This repository contains computer vision code implementations for industrial training competition robotics tasks, including object detection, QR code recognition, and line detection modules. The code is specifically optimized for deployment on Jetson Nano platform.
 
