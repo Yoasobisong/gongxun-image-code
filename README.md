@@ -6,8 +6,13 @@ This repository contains computer vision code implementations for industrial tra
 
 Below is a demo video showing material detection in action:
 
-<video src="runs/mat_o.mp4" width="640" height="480" controls>
-</video>
+https://user-images.githubusercontent.com/YOUR_USER_ID/gongxun-image-code/assets/runs/mat_o.mp4
+
+<div align="center">
+  <video src="runs/mat_o.mp4" width="640" height="480" controls>
+    Your browser does not support the video tag.
+  </video>
+</div>
 
 ## Key Features
 
@@ -124,7 +129,6 @@ gongxun_demo/
 - pyzbar >= 0.1.8
 - numpy >= 1.19.4
 - pyserial >= 3.5
-- Other dependencies (see requirements.txt)
 
 ## Quick Start
 
@@ -135,9 +139,7 @@ cd gongxun-image-code
 ```
 
 2. Install dependencies
-```bash
-pip3 install -r requirements.txt
-```
+
 
 3. Run examples
 ```bash
