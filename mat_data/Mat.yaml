@@ -1,0 +1,19 @@
+# Ultralytics YOLO 🚀, AGPL-3.0 license
+# COCO 2017 dataset https://cocodataset.org by Microsoft
+# Documentation: https://docs.ultralytics.com/datasets/detect/coco/
+# Example usage: yolo train data=coco.yaml
+# parent
+# ├── ultralytics
+# └── datasets
+#     └── coco  ← downloads here (20.1 GB)
+
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: /home/nano/gongxun_demo
+train: mat_data/images/train # train images (relative to 'path') 118287 images
+val: mat_data/images/val # val images (relative to 'path') 5000 images
+
+# Classes
+names:
+  0: red
+  1: green
+  2: blue
