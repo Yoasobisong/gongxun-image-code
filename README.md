@@ -1,79 +1,102 @@
-# 工训赛图像处理代码
+# Industrial Training Competition Computer Vision Code
 
-本仓库包含了工训赛相关的计算机视觉代码实现，用于机器人视觉任务处理。主要包括目标检测、二维码识别、线条检测等功能模块的实现。
+This repository contains computer vision code implementations for industrial training competition robotics tasks, including object detection, QR code recognition, and line detection modules. The code is specifically optimized for deployment on Jetson Nano platform.
 
-## 主要功能
+## Demo
 
-- **目标检测**: 使用YOLO模型进行物体识别和定位
-- **二维码识别**: 实现二维码的检测和解码功能
-- **线条检测**: 实现直线、曲线等几何特征的检测
-- **摄像头操作**: 支持实时视频流处理和图像采集
+Below is a demo video showing material detection in action:
 
-## 项目结构
+https://github.com/Yoasobisong/gongxun-image-code/raw/main/runs/mat_o.avi
+
+## Key Features
+
+- **Object Detection**: Material recognition and positioning using YOLO model
+- **QR Code Recognition**: QR code detection and decoding functionality
+- **Line Detection**: Detection of geometric features like straight lines and curves
+- **Camera Operations**: Real-time video stream processing and image capture
+
+## Project Structure
 
 ```
 gongxun_demo/
-├── code/              # 核心代码文件
-│   ├── yolo_detect.py    # 目标检测实现
-│   ├── qr_code.py        # 二维码识别
-│   ├── line_detect.py    # 线条检测
-│   └── cam_open.py       # 摄像头操作
-├── images/            # 测试图片目录
-├── mat_data/          # 训练数据和标注
-├── ann_pt/            # 神经网络模型文件
-└── mat_vino/          # OpenVINO优化模型
+├── code/              # Core implementation files
+│   ├── yolo_detect.py    # Object detection implementation
+│   ├── qr_code.py        # QR code recognition
+│   ├── line_detect.py    # Line detection
+│   └── cam_open.py       # Camera operations
+├── ann_pt/            # Neural network model files
+└── mat_vino/          # OpenVINO optimized models
 ```
 
-## 环境要求
+## Deployment Environment
 
-- Python 3.x
+### Hardware Requirements
+- **Platform**: Jetson Nano
+- **RAM**: 4GB
+- **Storage**: 16GB+ recommended
+
+### Software Requirements
+- **OS**: Ubuntu 18.04
+- **Python**: 3.6
+- **CUDA**: 10.2
+- **cuDNN**: 8.0
+
+### Dependencies
 - OpenCV-Python
-- PyTorch
-- OpenVINO (推理优化)
-- pyzbar (二维码处理)
+- PyTorch (with CUDA support)
+- OpenVINO (for inference optimization)
+- pyzbar (for QR code processing)
 - numpy
+- Other dependencies (see requirements.txt)
 
-## 快速开始
+## Quick Start
 
-1. 克隆仓库
+1. Clone the repository
 ```bash
 git clone https://github.com/Yoasobisong/gongxun-image-code.git
 cd gongxun-image-code
 ```
 
-2. 安装依赖
+2. Install dependencies
 ```bash
-pip install -r requirements.txt  # (如果有requirements.txt)
+pip3 install -r requirements.txt
 ```
 
-3. 运行示例
+3. Run examples
 ```bash
-# 目标检测
-python code/yolo_detect.py
+# Object Detection
+python3 code/yolo_detect.py
 
-# 二维码识别
-python code/qr_code.py
+# QR Code Recognition
+python3 code/qr_code.py
 
-# 线条检测
-python code/line_detect.py
+# Line Detection
+python3 code/line_detect.py
 ```
 
-## 使用说明
+## Usage Guide
 
-- 目标检测模块支持自定义模型导入
-- 二维码识别支持多种码制
-- 线条检测可调整参数适应不同场景
-- 支持实时视频流处理
+- Object detection module supports custom model import
+- QR code recognition supports multiple code formats
+- Line detection parameters can be adjusted for different scenarios
+- Supports real-time video stream processing on Jetson Nano
 
-## 维护者
+## Performance Optimization
+
+- Optimized for Jetson Nano using TensorRT
+- Supports OpenVINO acceleration
+- Multi-threading for real-time processing
+- Memory optimization for embedded deployment
+
+## Maintainer
 
 - [@Yoasobisong](https://github.com/Yoasobisong)
 
-## 联系方式
+## Contact
 
-- 邮箱：3133824384@qq.com
-- GitHub：[@Yoasobisong](https://github.com/Yoasobisong)
+- Email: 3133824384@qq.com
+- GitHub: [@Yoasobisong](https://github.com/Yoasobisong)
 
-## 许可证
+## License
 
 [MIT](LICENSE) © Yoasobisong 

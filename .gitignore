@@ -39,19 +39,23 @@ ENV/
 *.onnx
 *.weights
 
-# Images and videos
+# Images and videos (but allow demo video)
+images/
+mat_data/
 *.jpg
 *.jpeg
 *.png
 *.gif
 *.mp4
 *.avi
+!runs/mat_o.avi
 *.mov
 
 # Logs and databases
 *.log
 *.sqlite3
 runs/
+!runs/mat_o.avi
 
 # OS generated files
 .DS_Store
