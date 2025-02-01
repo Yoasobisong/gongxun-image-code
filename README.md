@@ -39,69 +39,21 @@ gongxun_demo/
 ### Core Modules
 
 #### 1. Object Detection (`yolo_detect.py`)
-- Implements YOLO-based material detection
-- Supports real-time object detection and tracking
-- Features:
-  - Multi-class material detection
-  - Bounding box visualization
-  - Confidence score filtering
-  - Real-time processing optimization
 
 #### 2. QR Code Recognition (`qr_code.py`)
-- Implements QR code detection and decoding
-- Features:
-  - Multi-format QR code support
-  - Real-time detection
-  - Error correction
-  - Position tracking
 
 #### 3. Line Detection (`line_detect.py`)
-- Implements line and geometric feature detection
-- Features:
-  - Straight line detection
-  - Curve detection
-  - Edge detection
-  - Perspective transformation
 
 #### 4. Camera Operations (`cam_open.py`)
-- Manages camera input and video streaming
-- Features:
-  - Multiple camera support
-  - Frame rate optimization
-  - Auto-exposure control
-  - Image preprocessing
-
 ### Supporting Modules
 
 #### 5. Main Competition Logic (`gongxun.py`)
-- Coordinates all modules for competition tasks
-- Implements state machine for task switching
-- Handles competition timing and scoring
-- Integrates all subsystem controls
 
 #### 6. OpenVINO Inference (`openvino_detect.py`)
-- Optimizes model inference using OpenVINO
-- Features:
-  - Model optimization for Jetson Nano
-  - Inference acceleration
-  - Memory usage optimization
-  - Batch processing support
 
 #### 7. Web Communication (`send_web.py`)
-- Handles web-based data transmission
-- Features:
-  - Real-time data streaming
-  - Status reporting
-  - Remote control interface
-  - Error logging
 
 #### 8. Serial Communication (`serial_deal.py`)
-- Manages serial port communication
-- Features:
-  - Protocol implementation
-  - Data synchronization
-  - Error handling
-  - Device control
 
 ## Deployment Environment
 
@@ -126,64 +78,6 @@ gongxun_demo/
 - numpy >= 1.19.4
 - pyserial >= 3.5
 
-## Quick Start
-
-1. Clone the repository
-```bash
-git clone https://github.com/Yoasobisong/gongxun-image-code.git
-cd gongxun-image-code
-```
-
-2. Install dependencies
-
-3. Run examples
-```bash
-# Object Detection
-python3 code/yolo_detect.py
-
-# QR Code Recognition
-python3 code/qr_code.py
-
-# Line Detection
-python3 code/line_detect.py
-
-# Full Competition Mode
-python3 code/gongxun.py
-```
-
-## Usage Guide
-
-### Object Detection
-- Supports custom model import via YOLO format
-- Adjustable confidence thresholds
-- Real-time visualization options
-- Multiple detection classes support
-
-### QR Code Recognition
-- Supports multiple QR code formats
-- Adjustable scan frequency
-- Position tracking capabilities
-- Error correction levels
-
-### Line Detection
-- Adjustable parameters for different scenarios
-- Multiple detection algorithms
-- Custom filter options
-- Real-time processing support
-
-### System Integration
-- Modular design for easy customization
-- Comprehensive logging system
-- Error handling and recovery
-- Performance monitoring
-
-## Performance Optimization
-
-- Optimized for Jetson Nano using TensorRT
-- OpenVINO acceleration for inference
-- Multi-threading for real-time processing
-- Memory optimization for embedded deployment
-- Custom CUDA kernels for specific operations
 
 ## Maintainer
 
