@@ -1,0 +1,20 @@
+# 创建 .gitignore
+echo "Openvino_pkg/
+*.pt
+ann_pt/
+ann_vino/
+*.engine
+*.onnx
+images/
+line_pt/
+log/
+mat_data/
+mat_pt/
+mat_vino/
+out.mp4
+runs/
+videos/
+__pycache__/
+test
+*.mp4
+" > .gitignore
