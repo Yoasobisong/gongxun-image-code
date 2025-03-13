@@ -22,7 +22,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG, stream=sys.stderr)
 
 class Gongxun():
-    def __init__(self, args, ann_model_path = "../ann_pt/ann4.pt", 
+    def __init__(self, args, ann_model_path = "../ann_pt/ann6.pt", 
                  mat_model_path = "../mat_pt/mat.pt", 
                  openvino_mat_path = "../mat_vino/mat.xml",
                  port = 5000, 
@@ -158,7 +158,7 @@ class Gongxun():
                     self.serial.send_mat_data(self.error_xy)
             elif self.task == 3:
                 if self.error_xy is not None:
-                    self.serial.send_ann_data(self.error_xy)
+                    self.serial.send_ann_data(self.error_xy, self.yolo_detect_ann.angle)
             elif self.task == 4:
                 if self.line_detect.distance is not None:
                     self.serial.send_line_data([self.line_detect.distance, self.line_detect.angle])
@@ -291,6 +291,10 @@ class Gongxun():
                     self.error_xy = self.get_error(self.yolo_detect_mat.center_xy)
                 elif self.task == 3:
                     self.error_xy = self.get_error(self.yolo_detect_ann.center_xy)
+                    try:
+                        cv2.putText(frame, f"ann_angle:{self.yolo_detect_ann.angle:.2f}", (10, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                    except Exception as e:
+                        pass
 
                 if self.task == 5:
                     self.disk5.if_move(self.error_xy)
@@ -307,8 +311,8 @@ class Gongxun():
                 
                 # print(self.center_xy)
                 if self.task != 0 and self.error_xy is not None:
-                    cv2.putText(frame, f"{self.error_xy[0]}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-                    cv2.putText(frame, f"{self.error_xy[1]}", (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                    cv2.putText(frame, f"{self.error_xy[0]:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                    cv2.putText(frame, f"{self.error_xy[1]:.2f}", (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
                     cv2.putText(frame, f"{self.error_xy[2]}", (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
                     
                     

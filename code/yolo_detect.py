@@ -10,6 +10,7 @@ from send_web import VideoStream
 import torch
 import numpy as np
 import argparse
+import math
 # from serial_send import SerialSend
 
 class Yolo_detect():
@@ -21,6 +22,7 @@ class Yolo_detect():
         self.line_width = line_width
         self.center_xy = None
         self.classes = None
+        self.angle = -255
         
     def detect(self, img):
         self.image = img
@@ -34,16 +36,30 @@ class Yolo_detect():
             cv2.circle(self.image, (int(self.x_y[i][0]), int(self.x_y[i][1])), 5, (0, 0, 255), -1)
         if(len(self.x_y) == 0):
             self.center_xy = None
+            self.angle = -255
         else:
+            if len(self.x_y) >= 2:
+                self.angle = self.get_angle()
+                pass
+            else:
+                self.angle = -255
             self.get_center()
         return self.image
         
     def deal_x_y(self):
+        # for i, xy in enumerate(self.x_y):
+        #     if  xy[2] / xy[3] > 1.2:
+        #         xy[1] = 1 if xy[1] < self.image.shape[0] / 2 else 479
+        #     elif xy[2] / xy[3] < 0.8:
+        #         xy[0] = 1 if xy[0] < self.image.shape[1] / 2 else 639
         for i, xy in enumerate(self.x_y):
-            if  xy[2] / xy[3] > 1.2:
-                xy[1] = 1 if xy[1] < self.image.shape[0] / 2 else 479
-            elif xy[2] / xy[3] < 0.8:
-                xy[0] = 1 if xy[0] < self.image.shape[1] / 2 else 639
+            w, h = xy[2:]
+            if w/h >= 1.1:
+                err = (xy[2] - xy[3]) / 2
+                xy[1] = (xy[1] - err) if xy[1] < 240 else (xy[1] + err)
+            elif w/h <=0.9:
+                err = (xy[3] - xy[2]) / 2
+                xy[0] = (xy[0] - err) if xy[0] < 320 else (xy[0] + err)
         
     def get_center(self):
         """
@@ -61,7 +77,47 @@ class Yolo_detect():
                 closest_point = np.array([x, y, self.classes[i]])
         self.center_xy = closest_point
 
+
+
+    def calculate_angle(self, x1, y1, x2, y2):
+        angle_rad = math.atan2(abs(y2 - y1), abs(x2 - x1))  # 计算弧度
+        angle_deg = math.degrees(angle_rad)  # 转换为角度
+        return ((y2 - y1)/(x2 - x1))/(abs((y2 - y1)/(x2 - x1)))*angle_deg
+
+    def _cal_center(self, point):
+        w, h = point[2:]
+        if w/h >= 1.1:
+            err = (point[2]-point[3])/2
+            point = [point[0], (point[1] - err) if point[1]<240 else (point[1] + err)]
+        else:
+            err = (point[3]-point[2])/2
+            point = [(point[0] - err) if point[0]<320 else (point[0] + err), point[1]]
+        return point    
+            
+    def get_right_points(self):
+        points_a = []
+        points_b = []
+        for i, point in enumerate(self.x_y):
+            w, h = point[2:]
+            if 0.9 < w/h < 1.1:
+                points_a.append(point[:2])
+                
+            else:
+                points_b.append(point[:2])
+        return (points_a + points_b)[:2]
+        
+            
+            
     
+    def get_angle(self):
+        """_summary_
+        get the angle of two points
+        """
+        points = self.get_right_points()
+        angle = self.calculate_angle(points[0][0], points[0][1], points[1][0], points[1][1])
+        cv2.line(self.image, (int(points[0][0]), int(points[0][1])), (int(points[1][0]), int(points[1][1])), (0, 255, 0), thickness=1, lineType=cv2.LINE_AA)
+        # print(f"angle: {angle}")
+        return angle  
 
 #
     

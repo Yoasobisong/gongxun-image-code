@@ -115,7 +115,7 @@ class Serial:
             self.ser.write(bytearray([0xff]))  # Frame tail
             self.ser.write(bytearray([0xef]))
 
-    def send_ann_data(self, data):
+    def send_ann_data(self, data, angle):
         data = [int(i) for i in data]
         if len(data) == 3:
             self.ser.write(bytearray([0x0c]))  # Frame header
@@ -129,6 +129,10 @@ class Serial:
                     self.send_byte(abs(value))
                 elif i == 2:
                     self.send_byte(abs(value))
+            self.ser.write(bytearray([1]) if angle > 0 else bytearray([0]))
+            self.ser.write(bytearray([abs(int(angle))]))
+            self.ser.write(bytearray([abs(int(angle * 100) % 100)]))
+            # print(f"sent: {data, angle}")
             self.ser.write(bytearray([0xff]))  
             self.ser.write(bytearray([0xef]))
 
