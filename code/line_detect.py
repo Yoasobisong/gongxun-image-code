@@ -5,10 +5,13 @@ from send_web import VideoStream
 import threading
 
 class LineDetector:
-    def __init__(self):
+    def __init__(self, h=72,s=0,v=38):
         self.angle = None
         self.distance = None
-
+        self.h = h
+        self.s = s
+        self.v = v
+        
     def detect(self, image):
         height = image.shape[0]
         cropped_frame = image[:height-95, :]
@@ -17,9 +20,9 @@ class LineDetector:
         hsv = cv2.cvtColor(cropped_frame, cv2.COLOR_BGR2HSV)
         
         # 应用阈值
-        h_binary = cv2.inRange(hsv[:,:,0], 72, 255)
-        s_binary = cv2.inRange(hsv[:,:,1], 0, 255)
-        v_binary = cv2.inRange(hsv[:,:,2], 38, 255)
+        h_binary = cv2.inRange(hsv[:,:,0], self.h, 255)
+        s_binary = cv2.inRange(hsv[:,:,1], self.s, 255)
+        v_binary = cv2.inRange(hsv[:,:,2], self.v, 255)
 
         # 合并阈值结果
         binary = cv2.bitwise_and(h_binary, s_binary)
